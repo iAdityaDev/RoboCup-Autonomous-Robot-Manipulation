@@ -5,7 +5,7 @@ detections_out = struct();
 
 if isempty(net)
     if exist('importNetworkFromONNX','file')
-        net = importNetworkFromONNX('models/best.onnx');
+        net = importNetworkFromONNX('models/best2.onnx');
     else
         net = importONNXNetwork('models/best.onnx', 'OutputLayerType','regression');
     end
