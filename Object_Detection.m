@@ -87,11 +87,11 @@ imshow(annotated, 'Parent', axHandle);
 title(sprintf('Detections: %d', n));
 drawnow;
 
-for i = 1:n
-    disp('--- Detection ---');
-    disp(detections_out(i).className);
-    disp(detections_out(i).bbox);
-    disp(detections_out(i).confidence);
-end
+% for i = 1:n
+%     disp('--- Detection ---');
+%     disp(detections_out(i).className);
+%     disp(detections_out(i).bbox);
+%     disp(detections_out(i).confidence);
+% end
 
 end
