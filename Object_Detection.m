@@ -75,7 +75,7 @@ labelStrs = strings(n, 1);
 
 for i = 1:n
     detections_out(i).className  = classNames(classIdx(i));
-    detections_out(i).bbox       = boxes(i, :);   % [x, y, w, h]
+    detections_out(i).bbox       = boxes(i, :);
     detections_out(i).confidence = confs(i);
     labelStrs(i) = sprintf('%s %.0f%%', classNames(classIdx(i)), confs(i)*100);
 end
