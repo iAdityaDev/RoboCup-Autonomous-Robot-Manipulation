@@ -8,6 +8,9 @@ endEffectorName = 'tool0';
 
 
 pickPosition    = [0.4,  0.1, 0.15];
+
+
+
 pickOrientation = [pi, 0, pi/2];    
 
 placePosition    = [0.3, -0.3, 0.20];
