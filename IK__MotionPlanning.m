@@ -1,4 +1,4 @@
-function [pickTraj, placeTraj] = IK__MotionPlanning()
+function [pickTraj, placeTraj] = IK__MotionPlanning(pickPosition)
 
 
 matData = load('modelData/ur5e_gripper.mat');
@@ -7,7 +7,7 @@ robot   = matData.robot;
 endEffectorName = 'tool0';
 
 
-pickPosition    = [0.4,  0.1, 0.15];
+% pickPosition    = [0.4,  0.1, 0.5];
 
 
 

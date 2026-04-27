@@ -1,7 +1,8 @@
-function detections_out = Object_Detection(Image)
+function yellowBbox = Object_Detection(Image)
 persistent figHandle net classNames inputSize axHandle;
 
 detections_out = struct();
+yellowBbox = [0, 0, 0, 0]; % default when not in frame
 
 if isempty(net)
     if exist('importNetworkFromONNX','file')
@@ -73,13 +74,27 @@ n = numel(confs);
 labelStrs = strings(n, 1);
 
 
+% for i = 1:n
+%     detections_out(i).className  = classNames(classIdx(i));
+%     detections_out(i).bbox       = boxes(i, :);
+%     detections_out(i).confidence = confs(i);
+%     labelStrs(i) = sprintf('%s %.0f%%', classNames(classIdx(i)), confs(i)*100);
+% end
+
+
 for i = 1:n
     detections_out(i).className  = classNames(classIdx(i));
     detections_out(i).bbox       = boxes(i, :);
     detections_out(i).confidence = confs(i);
     labelStrs(i) = sprintf('%s %.0f%%', classNames(classIdx(i)), confs(i)*100);
+
+    if strcmp(char(classNames(classIdx(i))), 'Yellow-Bottle')
+        yellowBbox = boxes(i, :);
+    end
 end
 
+% % always publish
+% disp(yellowBbox);
 
 annotated = insertObjectAnnotation(Image, 'rectangle', boxes, labelStrs, ...
     'Color', 'yellow', 'TextBoxOpacity', 0.7, 'FontSize', 12);
