@@ -51,9 +51,9 @@ q_approach = solveGIK(gik, poseConst, jointConst, T_approach, q_home);
 q_pick     = solveGIK(gik, poseConst, jointConst, T_pick,     q_approach');
 q_place    = solveGIK(gik, poseConst, jointConst, T_place,    q_home);
 
-fprintf('IK solved:\n  approach=[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_approach);
-fprintf('  pick    =[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_pick);
-fprintf('  place   =[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_place);
+% fprintf('IK solved:\n  approach=[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_approach);
+% fprintf('  pick    =[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_pick);
+% fprintf('  place   =[%.3f %.3f %.3f %.3f %.3f %.3f]\n', q_place);
 
 
 numSteps     = 100;         
@@ -73,9 +73,9 @@ placeWaypoints = [q_pick(:), q_approach(:), q_place(:)];
 pickTraj  = pickPos;  
 placeTraj = placePos;
 
-
-fprintf('  pickTraj  : %d joints x %d time steps\n', size(pickTraj));
-fprintf('  placeTraj : %d joints x %d time steps\n', size(placeTraj));
+% 
+% fprintf('  pickTraj  : %d joints x %d time steps\n', size(pickTraj));
+% fprintf('  placeTraj : %d joints x %d time steps\n', size(placeTraj));
 
 
 % 
