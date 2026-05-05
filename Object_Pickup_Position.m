@@ -43,7 +43,7 @@ Z = mean(validDepth) / 1000.0;
 
 X_cam = (u - cx) * Z / fx;
 Y_cam = (v - cy) * Z / fy;
-Z_cam = Z;
+Z_cam = 0.5-Z;
 
 point_cam   = [X_cam; Y_cam; Z_cam; 1];
 point_robot = Camera_Tform * point_cam;
