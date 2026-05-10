@@ -2,7 +2,7 @@ function yellowBbox = Object_Detection(Image)
     persistent figHandle net classNames inputSize axHandle;
     
     detections_out = struct();
-    yellowBbox = [0, 0, 0, 0]; % default when not in frame
+    yellowBbox = [0, 0, 0, 0];  
     
     if isempty(net)
         if exist('importNetworkFromONNX','file')
@@ -92,9 +92,7 @@ function yellowBbox = Object_Detection(Image)
             yellowBbox = boxes(i, :);
         end
     end
-    
-    % % always publish
-    % disp(yellowBbox);
+  
     
     annotated = insertObjectAnnotation(Image, 'rectangle', boxes, labelStrs, ...
         'Color', 'yellow', 'TextBoxOpacity', 0.7, 'FontSize', 12);
