@@ -1,8 +1,8 @@
-function yellowBbox = Object_Detection(Image)
+function [detections_out, n] = Object_Detection(Image)
     persistent figHandle net classNames inputSize axHandle;
     
     detections_out = struct();
-    yellowBbox = [0, 0, 0, 0];  
+ 
     
     if isempty(net)
         if exist('importNetworkFromONNX','file')
@@ -46,6 +46,7 @@ function yellowBbox = Object_Detection(Image)
         imshow(Image, 'Parent', axHandle);
         title('Detections: 0');
         drawnow;
+        n=0;
         return;
     end
     
@@ -72,28 +73,29 @@ function yellowBbox = Object_Detection(Image)
     
     n = numel(confs);
     labelStrs = strings(n, 1);
-    
-    
-    % for i = 1:n
-    %     detections_out(i).className  = classNames(classIdx(i));
-    %     detections_out(i).bbox       = boxes(i, :);
-    %     detections_out(i).confidence = confs(i);
-    %     labelStrs(i) = sprintf('%s %.0f%%', classNames(classIdx(i)), confs(i)*100);
-    % end
-    
-    
+
+
+
+
     for i = 1:n
         detections_out(i).className  = classNames(classIdx(i));
-        detections_out(i).bbox       = boxes(i, :);
+        detections_out(i).bbox       = struct('x1',     x1s(i),  ...  % ← fixed
+                                              'y1',     y1s(i),  ...
+                                              'x2',     x2s(i),  ...
+                                              'y2',     y2s(i),  ...
+                                              'width',  bw(i),   ...
+                                              'height', bh(i));
         detections_out(i).confidence = confs(i);
-        labelStrs(i) = sprintf('%s %.0f%%', classNames(classIdx(i)), confs(i)*100);
-    
-        if strcmp(char(classNames(classIdx(i))), 'Yellow-Bottle')
-            yellowBbox = boxes(i, :);
-        end
     end
-  
+
+    for i = 1:n
+        labelStrs(i) = sprintf('%s %.0f%%', detections_out(i).className, confs(i)*100);
+    end
     
+
+
+    % labelStrs(i) = sprintf('%s %.0f%%', objName, confs(i)*100);
+
     annotated = insertObjectAnnotation(Image, 'rectangle', boxes, labelStrs, ...
         'Color', 'yellow', 'TextBoxOpacity', 0.7, 'FontSize', 12);
     imshow(annotated, 'Parent', axHandle);
