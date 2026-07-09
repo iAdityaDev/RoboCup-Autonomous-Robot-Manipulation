@@ -1,6 +1,6 @@
 <div align="center">
-# RoboCup ARM Challenge
-### UR5e Autonomous Pick and Place — MATLAB / Simulink
+<h1>RoboCup ARM Challenge</h1>
+<h3>UR5e Autonomous Pick and Place — MATLAB / Simulink</h3>
 
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2025b%2B-orange?logo=mathworks&logoColor=white)
 ![Simulink](https://img.shields.io/badge/Simulink-Simulation%203D-blue?logo=mathworks&logoColor=white)
