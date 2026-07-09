@@ -11,6 +11,7 @@ Autonomous pick-and-place pipeline for a UR5e robot arm built for the **RoboCup 
 
 </div>
 
+<video src="https://github.com/user-attachments/assets/fb4c0638-75c5-493a-ae6f-d82336e50576" controls width="600"></video>
 ---
 
 ## Repository structure
@@ -27,8 +28,6 @@ RoboCup_ARM
 └── modelData/
     └── ur5e_gripper.mat      # RigidBodyTree: UR5e + gripper (12 DOF)
 ```
-
-<video src="https://github.com/user-attachments/assets/fb4c0638-75c5-493a-ae6f-d82336e50576" controls width="600"></video>
 
 ## State machine
 
